@@ -1,0 +1,146 @@
+/* Configuración General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f4f9; /* Blanco grisáceo muy limpio */
+    color: #1f1f1f;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Encabezado */
+header {
+    background-color: #fff;
+    padding: 60px 0 30px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #0070d1; 
+}
+
+.ps-line {
+    width: 60px;
+    height: 4px;
+    background-color: #0070d1;
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+/* Tarjetas (Secciones) */
+.card {
+    background: #fff;
+    margin: 30px 0;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Sombra suave para el fondo */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card.reversed {
+    flex-direction: row-reverse;
+}
+
+.card-content {
+    flex: 2; /* Aumentado de 1 a 2 para equilibrar con la imagen más grande */
+    padding: 0 30px; /* Reduje un poco el padding lateral para ganar espacio */
+}
+
+.card-content h2 {
+    color: #0070d1;
+    margin-bottom: 15px;
+    font-size: 1.6rem; /* Un poco más grande para acompañar la imagen */
+}
+
+/* Imágenes con efecto "No Plano" (MODIFICADO) */
+.card-img img {
+    width: 250px;  /* Antes 150px */
+    height: 250px; /* Antes 150px */
+    object-fit: cover;
+    border-radius: 20px;
+    border: 6px solid #fff; /* Borde un poco más grueso para resaltar */
+    
+    /* Sombra profunda optimizada para el nuevo tamaño */
+    box-shadow: 
+        12px 12px 25px rgba(0, 0, 0, 0.15), 
+        -8px -8px 20px rgba(255, 255, 255, 0.9);
+    display: block;
+}
+
+/* Ajuste adicional para que no se rompa el diseño en pantallas medianas */
+@media (max-width: 800px) {
+    .card-img img {
+        width: 200px;
+        height: 200px;
+    }
+}
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .card, .card.reversed {
+        flex-direction: column;
+        text-align: center;
+    }
+    .card-img {
+        margin-top: 20px;
+    }
+}
+.grid-section {
+    display: flex;
+    flex-direction: column; /* Pone el título arriba y las fotos abajo */
+    align-items: center;
+}
+
+.image-grid {
+    display: grid;
+    /* Crea dos columnas de igual tamaño */
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; /* Espacio entre las imágenes */
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Forzamos a que estas imágenes sean super grandes */
+.image-grid .card-img img {
+    width: 100%;      /* Ocupa todo el ancho de su columna */
+    height: 400px;    /* Altura fija grande */
+    object-fit: cover; /* Para que no se deformen */
+    border-radius: 20px;
+}
+
+/* Responsive: En celulares se verán una debajo de otra */
+@media (max-width: 768px) {
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+    .image-grid .card-img img {
+        height: 300px; /* Un poco más pequeñas en móvil */
+    }
+}
